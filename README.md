@@ -1,5 +1,17 @@
 # CHICHEJ Web
 
+## Piloto estático — Fase 2
+
+Las páginas Nosotros e Información ya tienen copias estáticas en `public/`, conservando el contenido y estilo originales. Iniciar desde esta carpeta con Node.js:
+
+```powershell
+node scripts/serve-static.mjs
+```
+
+Abrir [Nosotros](http://localhost:8080/nosotros.html) e [Información](http://localhost:8080/informacion.html). No requiere PHP, Apache, MySQL ni instalar paquetes npm. Las demás opciones están identificadas como pendientes; el sistema PHP original sigue intacto.
+
+Consultar [Fase 2: conversiones, pruebas y checklist](docs/FASE-2-PILOTO-PORTABLE.md). `firebase.json` prepara únicamente `public` como raíz futura: **no se ha desplegado** ni vinculado un proyecto Firebase.
+
 ## Copia portable — preparación del 17/09/2026
 
 Este proyecto independiente corresponde a `Andrux88Felius/chichej-web` y se trabaja en `C:\Proyectos\chichej-web`. La carpeta original `servidor-linux` no forma parte de esta intervención.

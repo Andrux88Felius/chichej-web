@@ -1,0 +1,5 @@
+/* Adaptaciones exclusivas del piloto; estilos originales intactos. */
+a[aria-disabled="true"]{cursor:default}
+.main-nav a[aria-disabled="true"],.nav-login[aria-disabled="true"],.site-footer a[aria-disabled="true"]{opacity:.62}
+.main-nav a[aria-disabled="true"]:after{display:none}
+.pilot-note{font-size:12px;color:inherit;opacity:.75;margin-top:24px}
