@@ -1,0 +1,3 @@
+<?php $userDataPage='pedidos'; require __DIR__.'/../includes/views/user-data-ux.php'; return; ?>
+<main id="contenido" class="portal"><section class="portal-hero portal-hero--small"><div class="container"><span class="eyebrow eyebrow--light">Área de usuario</span><h1>Mis pedidos</h1></div></section><section class="section section--cream"><div class="container narrow"><div class="empty-state"><span>□</span><h2>Aún no hay pedidos</h2><p>El historial y seguimiento aparecerán cuando se conecte el catálogo y el sistema de pedidos.</p><a class="button button--dark" href="../productos.php">Explorar productos</a></div></div></section></main>
+<?php require __DIR__.'/../includes/footer.php'; ?>

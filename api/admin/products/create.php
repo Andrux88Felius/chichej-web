@@ -1,0 +1,9 @@
+<?php
+declare(strict_types=1);
+function productCreateResponse(int $status,array $payload):never{http_response_code($status);header('Content-Type: application/json; charset=utf-8');echo json_encode($payload,JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES);exit;}
+if(($_SERVER['REQUEST_METHOD']??'')!=='POST')productCreateResponse(405,['success'=>false,'code'=>'method_not_allowed']);
+require_once dirname(__DIR__,3).'/includes/auth.php';$user=currentUser();if($user===null)productCreateResponse(401,['success'=>false,'code'=>'authentication_required']);
+$raw=file_get_contents('php://input');try{$body=json_decode(is_string($raw)?$raw:'',true,16,JSON_THROW_ON_ERROR);}catch(Throwable){productCreateResponse(400,['success'=>false,'code'=>'invalid_json']);}
+if(!is_array($body)||array_keys($body)!==['csrf_token','product'])productCreateResponse(400,['success'=>false,'code'=>'invalid_fields']);if(!verifyChichejCsrfToken(is_string($body['csrf_token'])?$body['csrf_token']:null))productCreateResponse(403,['success'=>false,'code'=>'invalid_csrf']);
+require_once dirname(__DIR__,3).'/includes/products.php';require_once dirname(__DIR__,3).'/services/AdminAuthorizationService.php';require_once dirname(__DIR__,3).'/services/ProductService.php';
+try{$data=validateProductPayload($body['product']);$admin=(new AdminAuthorizationService())->requireFreshAdmin($user);$id=(new ProductService())->create($data,$admin);productCreateResponse(201,['success'=>true,'productId'=>$id]);}catch(InvalidArgumentException $e){productCreateResponse(422,['success'=>false,'code'=>$e->getMessage()]);}catch(AdminAuthorizationException){productCreateResponse(403,['success'=>false,'code'=>'admin_not_authorized']);}catch(ProductConflictException){productCreateResponse(409,['success'=>false,'code'=>'conflict']);}catch(Throwable $e){error_log('Product create failed: '.$e->getMessage());productCreateResponse(503,['success'=>false,'code'=>'product_unavailable']);}

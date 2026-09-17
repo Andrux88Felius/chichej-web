@@ -1,0 +1,48 @@
+/vendor/
+
+# Entorno y credenciales (los ejemplos vacíos sí se versionan)
+.env
+.env.*
+!.env.example
+credentials.php
+credentials.json
+serviceAccount*.json
+service-account*.json
+firebase-service-account*.json
+firebase-admin*.json
+*-firebase-adminsdk-*.json
+*.pem
+*.key
+*.p12
+*.pfx
+/secrets/
+/credentials/
+/config/*.local.php
+/config/*.local.json
+# config/mail.php y config/firebase.php solo leen variables: conservarlos.
+
+# Dependencias y resultados generados
+/node_modules/
+/dist/
+/build/
+/.firebase/
+firebase-debug.log*
+firestore-debug.log*
+database-debug.log*
+
+# Temporales, logs y configuraciones del equipo
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+/tmp/
+/temp/
+/logs/
+/.idea/
+/.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
