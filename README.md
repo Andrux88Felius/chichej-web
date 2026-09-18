@@ -1,5 +1,11 @@
 # CHICHEJ Web
 
+## Inicio portable — Fase 3
+
+Inicio, Nosotros e Información ya forman una navegación estática en `public/`. Ejecutar `node scripts/serve-static.mjs` y abrir [Inicio](http://localhost:8080/). La raíz sirve Inicio directamente; las opciones pendientes no enlazan a PHP.
+
+Con el servidor activo, `node scripts/check-static.mjs` comprueba las tres páginas, recursos, anclas y aislamiento de la raíz pública. Ver [Fase 3: clasificación, correcciones y cierre Git](docs/FASE-3-INICIO-PORTABLE.md). Sin conexión Firebase ni despliegue en esta fase.
+
 ## Piloto estático — Fase 2
 
 Las páginas Nosotros e Información ya tienen copias estáticas en `public/`, conservando el contenido y estilo originales. Iniciar desde esta carpeta con Node.js:

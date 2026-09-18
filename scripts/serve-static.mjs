@@ -13,8 +13,8 @@ const server = http.createServer(async (request, response) => {
     response.writeHead(405, { Allow: 'GET, HEAD' }); response.end(); return;
   }
   try {
-    const pathname = decodeURIComponent(new URL(request.url, 'http://127.0.0.1').pathname);
-    if (pathname === '/') { response.writeHead(302, { Location: '/nosotros.html' }); response.end(); return; }
+    const requestedPath = decodeURIComponent(new URL(request.url, 'http://127.0.0.1').pathname);
+    const pathname = requestedPath === '/' ? '/index.html' : requestedPath;
     const path = resolve(root, '.' + pathname);
     const within = relative(root, path);
     if (within.startsWith('..') || isAbsolute(within) || !types[extname(path)]) throw new Error('Not public');
@@ -27,4 +27,4 @@ const server = http.createServer(async (request, response) => {
     response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }); response.end('Recurso no disponible en el piloto.');
   }
 });
-server.listen(port, '127.0.0.1', () => console.log(`Piloto CHICHEJ: http://localhost:${port}/nosotros.html`));
+server.listen(port, '127.0.0.1', () => console.log(`CHICHEJ portable: http://localhost:${port}/`));
