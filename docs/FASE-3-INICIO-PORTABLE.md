@@ -10,6 +10,17 @@ Se implementó Inicio estático y se consolidó la navegación de Inicio, Nosotr
 
 La implementación se completó inicialmente de forma local porque el adjunto terminaba a mitad del punto 14. Una instrucción posterior autoriza el cierre formal mediante commit y push exclusivamente a main de Andrux88Felius/chichej-web. El cierre no introduce cambios funcionales ni despliegue.
 
+## Cierre formal Git
+
+- Commit de implementación: `ea01dbaec6404c3149d3c9e5bc1a21d963cb3cb5` — `feat: migrate home and public navigation`.
+- GitHub: https://github.com/Andrux88Felius/chichej-web/commit/ea01dbaec6404c3149d3c9e5bc1a21d963cb3cb5
+- Push confirmado por Git: `2fea269..ea01dba main -> main`, exclusivamente en `Andrux88Felius/chichej-web`.
+- Rama utilizada: `main`. Estado comprobado después del push: sincronizada con `origin/main`, árbol limpio (`nothing to commit, working tree clean`).
+- Comprobación repetida al cierre: `node scripts/check-static.mjs` aprobada; 3 páginas, 33 recursos HTTP 200, anclas válidas, raíz Inicio y 4 rutas privadas bloqueadas.
+- Revisión de candidatos: sin marcadores de secretos, credenciales ni archivos temporales/logs. Las 18 imágenes incorporadas son idénticas a los originales ya existentes.
+- No se ejecutó `firebase deploy`; Firebase y sus reglas no se modificaron. Sin cambios en servidor-linux, Flutter, ESP32, PHP originales o módulos pendientes.
+- Esta constancia se añade en un commit exclusivamente documental posterior, autorizado en el pedido de cierre: el hash del commit principal y el éxito real del push solo pueden registrarse después de que ocurran. No modifica funcionalidad. El estado limpio final y la subida de esta constancia se verifican tras su commit y se comunican en la entrega.
+
 ## Análisis de index.php
 
 Categorías: A totalmente estática; B composición mediante PHP; C Firebase; D sesión/autenticación; E backend operativo; F pendiente de fases posteriores. Una sección puede tener más de una categoría.
