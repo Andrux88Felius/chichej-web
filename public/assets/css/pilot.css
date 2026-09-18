@@ -9,3 +9,8 @@ a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid var(
 /* La galería heredaba dos columnas y el sello sobresalía en pantallas estrechas. */
 @media(max-width:980px){.story-visual__seal{right:10px}}
 @media(max-width:430px){.media-grid{grid-template-columns:minmax(0,1fr)}.media-slot--featured,.media-slot:last-child{grid-column:auto}}
+/* Textos históricos de catálogo, incluso nombres sin espacios. */
+[data-products] .catalog-grid{min-width:0}
+[data-products] .catalog-card{min-width:0;overflow-wrap:anywhere}
+[data-products] .catalog-card>div{min-width:0}
+[data-products] .data-card__meta{flex-wrap:wrap}

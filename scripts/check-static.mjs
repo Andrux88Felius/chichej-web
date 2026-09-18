@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // Ejecutar con el servidor estático activo. No visita enlaces externos.
 const root = fileURLToPath(new URL('../public/', import.meta.url));
 const origin = process.argv[2] || 'http://localhost:8080';
-const pages = ['index.html', 'nosotros.html', 'informacion.html'];
+const pages = ['index.html', 'nosotros.html', 'informacion.html', 'productos.html'];
 const resources = new Set(pages);
 for (const page of pages) {
   const html = await readFile(resolve(root, page), 'utf8');
@@ -54,4 +54,9 @@ for (const path of ['/.env', '/config/mail.php', '/api/auth/session-login.php', 
 }
 const script = await readFile(resolve(root, 'assets/js/pilot.js'), 'utf8');
 assert(!/\bfetch\s*\(|XMLHttpRequest|firebasejs|signInWith/.test(script), 'Sin APIs ni autenticación');
+// El catálogo dinámico puede importar el SDK, pero no operaciones de escritura.
+for (const name of ['firebase-config.js', 'productos.js']) {
+  const module = await readFile(resolve(root, 'assets/js', name), 'utf8');
+  assert(!/\b(?:addDoc|setDoc|updateDoc|deleteDoc|writeBatch|runTransaction|onSnapshot|signInWith\w*)\s*\(/.test(module), 'Catálogo solo lectura: ' + name);
+}
 console.log(`OK: ${pages.length} páginas, ${resources.size} recursos HTTP 200, anclas válidas, raíz Inicio y 4 rutas privadas bloqueadas.`);

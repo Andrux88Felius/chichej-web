@@ -1,5 +1,11 @@
 # CHICHEJ Web
 
+## Productos con Firestore — Fase 4
+
+`public/productos.html` consulta la colección real `productos` con Firebase Web SDK modular, sin PHP, autenticación ni operaciones de escritura. La configuración pública oficial está en `public/assets/js/firebase-config.js`. Se muestran solo activos; el catálogo no crea pedidos ni habilita compra.
+
+Ejecutar `node scripts/serve-static.mjs`, abrir [Productos](http://localhost:8080/productos.html) y comprobar con `node scripts/check-static.mjs` y `node scripts/check-products.mjs`. Ver [informe Fase 4](docs/FASE-4-PRODUCTOS-FIREBASE.md) para esquema real, permisos observados, pruebas y límites. No se desplegó Hosting ni se modificaron reglas o datos Firebase.
+
 ## Inicio portable — Fase 3
 
 Inicio, Nosotros e Información ya forman una navegación estática en `public/`. Ejecutar `node scripts/serve-static.mjs` y abrir [Inicio](http://localhost:8080/). La raíz sirve Inicio directamente; las opciones pendientes no enlazan a PHP.
