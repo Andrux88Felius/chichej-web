@@ -9,6 +9,14 @@ export const firebaseConfig = Object.freeze({
   appId: '1:152737624623:web:3b3dc92078dd21484e4cda',
 });
 export let db = null;
+let appPromise;
+
+export function getFirebaseApp() {
+  appPromise ??= import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js')
+    .then(({ initializeApp }) => initializeApp(firebaseConfig, 'chichej-public-catalog'))
+    .catch(error => { appPromise = undefined; throw error; });
+  return appPromise;
+}
 
 export async function getProductsDatabase() {
   if (!['apiKey', 'projectId', 'appId'].every(key => typeof firebaseConfig[key] === 'string' && firebaseConfig[key].trim())) {
@@ -16,11 +24,11 @@ export async function getProductsDatabase() {
     error.code = 'configuration-missing';
     throw error;
   }
-  // Versión fija oficial; no Auth, Analytics, RTDB ni persistencia local.
-  const [{ initializeApp }, { getFirestore, collection, getDocs }] = await Promise.all([
-    import('https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js'),
+  // El catálogo comparte la aplicación Web con Authentication, sin escribir datos.
+  const [app, { getFirestore, collection, getDocs }] = await Promise.all([
+    getFirebaseApp(),
     import('https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js'),
   ]);
-  db ??= getFirestore(initializeApp(firebaseConfig, 'chichej-public-catalog'));
+  db ??= getFirestore(app);
   return { db, collection, getDocs };
 }

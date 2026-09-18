@@ -1,8 +1,14 @@
 # CHICHEJ Web
 
+## Login, sesión y logout — Fase 5A
+
+`public/login.html` permite el ingreso de cuentas existentes con Firebase Authentication modular. La sesión se muestra solo después de leer el perfil propio en RTDB `usuarios/{uid}` y validar rol y bloqueo. Las cinco páginas públicas reconocen la sesión; el cierre regresa a Inicio. Registro, recuperación y áreas privadas continúan pendientes.
+
+Ejecutar `node scripts/serve-static.mjs` y abrir [Login](http://localhost:8080/login.html). Validaciones: `node scripts/check-static.mjs`, `node scripts/check-auth.mjs` y `node scripts/check-products.mjs`. El ingreso real cliente/admin y los permisos RTDB requieren la prueba personal de Eduardo; no se usaron credenciales reales. Ver [informe y comprobaciones de Fase 5A](docs/FASE-5A-LOGIN-FIREBASE.md). Sin deploy, creación de cuentas, escrituras de perfiles ni cambios de reglas.
+
 ## Productos con Firestore — Fase 4
 
-`public/productos.html` consulta la colección real `productos` con Firebase Web SDK modular, sin PHP, autenticación ni operaciones de escritura. La configuración pública oficial está en `public/assets/js/firebase-config.js`. Se muestran solo activos; el catálogo no crea pedidos ni habilita compra.
+`public/productos.html` consulta la colección real `productos` con Firebase Web SDK modular, sin PHP ni operaciones de escritura y sin exigir iniciar sesión. La configuración pública oficial está en `public/assets/js/firebase-config.js`. Se muestran solo activos; el catálogo no crea pedidos ni habilita compra.
 
 Ejecutar `node scripts/serve-static.mjs`, abrir [Productos](http://localhost:8080/productos.html) y comprobar con `node scripts/check-static.mjs` y `node scripts/check-products.mjs`. Ver [informe Fase 4](docs/FASE-4-PRODUCTOS-FIREBASE.md) para esquema real, permisos observados, pruebas y límites. No se desplegó Hosting ni se modificaron reglas o datos Firebase.
 
