@@ -95,11 +95,13 @@ for (const code of ['auth/invalid-email', 'auth/too-many-requests', 'auth/networ
 const scripts = new URL('../public/assets/js/', import.meta.url);
 for (const name of await readdir(scripts)) {
   const source = await readFile(new URL(name, scripts), 'utf8');
-  assert(!/(?<![.\w])(?:createUserWithEmailAndPassword|sendPasswordResetEmail|updateProfile|updateEmail|updatePassword|deleteUser|setCustomUserClaims|addDoc|setDoc|updateDoc|deleteDoc|writeBatch|runTransaction|push|update|remove|set)\s*\(/.test(source), name + ': sin creación de cuentas/escrituras');
+  assert(!/(?<![.\w])(?:updateProfile|updateEmail|updatePassword|setCustomUserClaims|addDoc|setDoc|updateDoc|deleteDoc|writeBatch|push|update|remove|set)\s*\(/.test(source), name + ': sin escrituras fuera del alcance');
+  if (name !== 'register-firebase.js') assert(!/\b(?:createUserWithEmailAndPassword|deleteUser|runTransaction)\s*\(/.test(source), name + ': registro aislado');
+  if (name !== 'recovery-firebase.js') assert(!/\bsendPasswordResetEmail\s*\(/.test(source), name + ': recuperación aislada');
   assert(!/localStorage|sessionStorage|getIdToken|192\.168\.|\/var\/www|[A-Z]:\\/.test(source), name + ': sin credenciales/rutas/almacenamiento manual');
   if (name.startsWith('auth-')) assert(!/console\.(log|error|warn)/.test(source), 'Auth no registra datos');
 }
-for (const page of ['index', 'nosotros', 'productos', 'informacion', 'login']) {
+for (const page of ['index', 'nosotros', 'productos', 'informacion', 'login', 'registro']) {
   const html = await readFile(new URL('../public/' + page + '.html', import.meta.url), 'utf8');
   assert.match(html, /src="assets\/js\/auth-ui.js"/);
   assert.match(html, /href="login.html" data-auth-login/);

@@ -1,10 +1,16 @@
 # CHICHEJ Web
 
+## Registro y recuperación — Fase 5B
+
+`public/registro.html` crea una identidad nueva con Firebase Authentication y su perfil cliente en RTDB `usuarios/{uid}`, sin reemplazar perfiles existentes. Recuperación está integrada en Login y utiliza el correo seguro de Firebase. El esquema conserva los seis campos del registro PHP; no concede muestras iniciales (Flutter las inicializa de otra manera, según el análisis documentado).
+
+Ejecutar `node scripts/serve-static.mjs` y abrir [Registro](http://localhost:8080/registro.html). Checks: `check-static.mjs`, `check-auth.mjs`, `check-products.mjs` y `check-register.mjs`, todos bajo `scripts/`. No se crearon cuentas ni se enviaron correos reales durante las pruebas automáticas. Eduardo debe efectuar el registro de una cuenta propia y la recuperación; ver [informe Fase 5B](docs/FASE-5B-REGISTRO-RECUPERACION.md). Sin cambios de reglas ni deploy.
+
 ## Login, sesión y logout — Fase 5A
 
 `public/login.html` permite el ingreso de cuentas existentes con Firebase Authentication modular. La sesión se muestra solo después de leer el perfil propio en RTDB `usuarios/{uid}` y validar rol y bloqueo. Las cinco páginas públicas reconocen la sesión; el cierre regresa a Inicio. Registro, recuperación y áreas privadas continúan pendientes.
 
-Ejecutar `node scripts/serve-static.mjs` y abrir [Login](http://localhost:8080/login.html). Validaciones: `node scripts/check-static.mjs`, `node scripts/check-auth.mjs` y `node scripts/check-products.mjs`. El ingreso real cliente/admin y los permisos RTDB requieren la prueba personal de Eduardo; no se usaron credenciales reales. Ver [informe y comprobaciones de Fase 5A](docs/FASE-5A-LOGIN-FIREBASE.md). Sin deploy, creación de cuentas, escrituras de perfiles ni cambios de reglas.
+Ejecutar `node scripts/serve-static.mjs` y abrir [Login](http://localhost:8080/login.html). Validaciones: `node scripts/check-static.mjs`, `node scripts/check-auth.mjs` y `node scripts/check-products.mjs`. Eduardo confirmó posteriormente el ingreso real de cliente y admin_principal, lectura de perfil, persistencia con F5 y logout; también confirmó navegación persistente del cliente. Ver [informe y comprobaciones de Fase 5A](docs/FASE-5A-LOGIN-FIREBASE.md). Durante esa implementación no hubo deploy, creación de cuentas, escrituras de perfiles ni cambios de reglas.
 
 ## Productos con Firestore — Fase 4
 
