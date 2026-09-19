@@ -1,5 +1,11 @@
 # CHICHEJ Web
 
+## Mi Cuenta y Perfil de consulta — Fase 6A
+
+`public/usuario/index.html` y `public/usuario/perfil.html` muestran únicamente el perfil propio de la sesión Firebase. Sin sesión, redirigen a Login. La navegación autenticada permite entrar a Mi cuenta; logout limpia los datos y vuelve al Inicio público. Edición, pedidos, reservas y promociones siguen pendientes. Se mantiene el acceso de admin/admin_principal a su propio perfil, como en requireUser del original, sin panel administrativo ni cambio de rol.
+
+Con `node scripts/serve-static.mjs`, abrir [Mi cuenta](http://localhost:8080/usuario/). Ejecutar también `node scripts/check-account.mjs`, además de los cuatro checks anteriores. [Informe y pruebas manuales de Fase 6A](docs/FASE-6A-MI-CUENTA-PERFIL.md). Sin nuevas escrituras Firebase ni deploy. Eduardo confirmó el registro, perfil cliente, sesión, logout, nuevo login y recuperación/cambio de contraseña de Fase 5B; las pruebas reales de estas páginas privadas quedan pendientes de su validación.
+
 ## Registro y recuperación — Fase 5B
 
 `public/registro.html` crea una identidad nueva con Firebase Authentication y su perfil cliente en RTDB `usuarios/{uid}`, sin reemplazar perfiles existentes. Recuperación está integrada en Login y utiliza el correo seguro de Firebase. El esquema conserva los seis campos del registro PHP; no concede muestras iniciales (Flutter las inicializa de otra manera, según el análisis documentado).

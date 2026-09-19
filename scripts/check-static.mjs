@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // Ejecutar con el servidor estático activo. No visita enlaces externos.
 const root = fileURLToPath(new URL('../public/', import.meta.url));
 const origin = process.argv[2] || 'http://localhost:8080';
-const pages = ['index.html', 'nosotros.html', 'informacion.html', 'productos.html', 'login.html', 'registro.html'];
+const pages = ['index.html', 'nosotros.html', 'informacion.html', 'productos.html', 'login.html', 'registro.html', 'usuario/index.html', 'usuario/perfil.html'];
 const resources = new Set(pages);
 for (const page of pages) {
   const html = await readFile(resolve(root, page), 'utf8');
@@ -24,7 +24,7 @@ for (const page of pages) {
     if (/^(https?:|tel:)/.test(ref)) continue;
     assert.notEqual(ref, '#', page + ': no enlaces vacíos');
     const [file, hash] = ref.split('#');
-    const target = file || page;
+    const target = file ? decodeURIComponent(new URL(file, 'https://static.invalid/' + page).pathname.slice(1)) : page;
     assert(!relative(root, resolve(root, target)).startsWith('..'));
     const content = await readFile(resolve(root, target));
     resources.add(target);

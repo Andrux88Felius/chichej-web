@@ -14,7 +14,10 @@ const server = http.createServer(async (request, response) => {
   }
   try {
     const requestedPath = decodeURIComponent(new URL(request.url, 'http://127.0.0.1').pathname);
-    const pathname = requestedPath === '/' ? '/index.html' : requestedPath;
+    if (requestedPath === '/usuario') {
+      response.writeHead(308, { Location: '/usuario/' }); response.end(); return;
+    }
+    const pathname = requestedPath.endsWith('/') ? requestedPath + 'index.html' : requestedPath;
     const path = resolve(root, '.' + pathname);
     const within = relative(root, path);
     if (within.startsWith('..') || isAbsolute(within) || !types[extname(path)]) throw new Error('Not public');

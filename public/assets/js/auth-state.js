@@ -1,3 +1,4 @@
+import { accountDetails } from './account-data.js';
 // Lógica independiente del DOM: el SDK administra toda la persistencia.
 export function authError(code) {
   return Object.assign(new Error('Authentication unavailable'), { code });
@@ -17,7 +18,7 @@ export function profileForUser(user, profile) {
   if (!['cliente', 'admin', 'admin_principal'].includes(role)) throw authError('role-not-allowed');
   const email = user.email || (typeof profile.email === 'string' ? profile.email : '');
   const name = typeof profile.nombre === 'string' ? profile.nombre.trim() : '';
-  return Object.freeze({ uid: user.uid, name: name || email || 'Usuario', email, role });
+  return Object.freeze({ uid: user.uid, name: name || email || 'Usuario', email, role, details: accountDetails(profile) });
 }
 
 export function errorMessage(error) {

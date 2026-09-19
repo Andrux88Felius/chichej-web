@@ -12,6 +12,7 @@ export async function mountAuthUI(getSession, navigate = url => window.location.
     document.querySelectorAll('[data-auth-login]').forEach(element => { element.hidden = canLogout; });
     document.querySelectorAll('[data-auth-account]').forEach(element => { element.hidden = !canLogout; });
     document.querySelectorAll('[data-auth-session-only]').forEach(element => { element.hidden = !authenticated; });
+    document.querySelectorAll('[data-account-link]').forEach(element => { element.hidden = !authenticated; });
     document.querySelectorAll('[data-auth-name]').forEach(element => { element.textContent = state.profile?.name || ''; });
     document.querySelectorAll('[data-auth-role]').forEach(element => { element.textContent = state.profile?.role || ''; });
     document.querySelectorAll('[data-auth-logout]').forEach(element => { element.disabled = pending; });
@@ -44,7 +45,7 @@ export async function mountAuthUI(getSession, navigate = url => window.location.
   });
 
   document.querySelectorAll('[data-auth-logout]').forEach(button => button.addEventListener('click', async () => {
-    if (session && await session.logout()) navigate('index.html');
+    if (session && await session.logout()) navigate((document.body.dataset.publicRoot || '') + 'index.html');
   }));
 
   document.querySelector('[data-password-toggle]')?.addEventListener('click', event => {

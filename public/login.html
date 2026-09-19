@@ -30,7 +30,7 @@
             <a class=""  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Contacto</a>
             <a class="" href="informacion.html">Información</a>
             <a href="registro.html" data-auth-login>Crear cuenta</a>
-        </nav>
+        <a href="usuario/index.html" data-account-link hidden>Mi cuenta</a></nav>
         <a class="nav-login" href="login.html" data-auth-login><span>Iniciar sesión</span><b aria-hidden="true">↗</b></a><div class="portable-account" data-auth-account hidden><span data-auth-name></span><button type="button" data-auth-logout>Cerrar sesión</button></div>
     </div>
 </header>
@@ -48,7 +48,7 @@
       </fieldset>
     </form>
     <p class="form-status" id="auth-status" data-auth-status role="status" aria-live="polite" aria-atomic="true"></p>
-    <div class="auth-message" data-auth-account hidden><strong data-auth-name></strong><span data-auth-session-only>Rol: <span data-auth-role></span></span><p data-auth-session-only>Tu sesión está activa en las páginas públicas. El área de cuenta y el panel de administración todavía no están disponibles.</p><a class="text-link" data-auth-session-only href="index.html">Continuar al inicio →</a><button type="button" class="button button--primary" data-auth-logout>Cerrar sesión</button></div>
+    <div class="auth-message" data-auth-account hidden><strong data-auth-name></strong><span data-auth-session-only>Rol: <span data-auth-role></span></span><p data-auth-session-only>Tu sesión está activa en las páginas públicas. Puedes consultar tu cuenta y perfil. El panel de administración todavía no está disponible.</p><a class="text-link" data-auth-session-only href="index.html">Continuar al inicio →</a><button type="button" class="button button--primary" data-auth-logout>Cerrar sesión</button></div>
     <details class="password-recovery" id="recuperar-clave" data-auth-login><summary>¿Olvidaste tu contraseña?</summary><p>Te enviaremos instrucciones para recuperar el acceso.</p><form data-recovery-form method="post" aria-describedby="recovery-status"><fieldset data-recovery-fields disabled><label for="recovery-email">Correo de tu cuenta</label><input id="recovery-email" name="recovery_email" type="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required><button class="button button--primary button--full" type="submit">Enviar instrucciones</button></fieldset><p id="recovery-status" data-recovery-status class="form-status" role="status" aria-live="polite" aria-atomic="true"></p></form></details>
     <p class="auth-switch" data-auth-login>¿Aún no tienes cuenta? <a href="registro.html">Crear cuenta</a></p>
     <noscript><p>Activa JavaScript para iniciar sesión de forma segura.</p></noscript>
@@ -61,7 +61,7 @@
         <div><h2>Tu cuenta</h2><a href="login.html" data-auth-login>Iniciar sesión</a><div data-auth-account hidden><span data-auth-name></span><button class="footer-logout" type="button" data-auth-logout>Cerrar sesión</button></div><a href="registro.html" data-auth-login>Crear cuenta</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Reservas</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Pedidos</a></div>
         <div><h2>Contacto</h2><a href="tel:+59173085467">Gerencia: 73085467</a><a href="https://wa.me/59177271557" target="_blank" rel="noopener noreferrer">WhatsApp: 77271557</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Formulario de contacto</a></div>
     </div>
-    <p class="container pilot-note">Versión portable: Inicio, Nosotros, Productos, Información, Inicio de sesión y Registro disponibles. Las demás secciones están pendientes.</p>
+    <p class="container pilot-note">Versión portable: Inicio, Nosotros, Productos, Información, Inicio de sesión y Registro disponibles. Mi cuenta y Perfil disponibles con sesión. Las demás secciones están pendientes.</p>
     <div class="container footer-bottom"><span>© <span data-year>2026</span> CHICHEJ. Todos los derechos reservados.</span><span>Hecho con identidad boliviana <i>◆</i></span></div>
 </footer>
 <aside class="sound-player" data-sound-player aria-label="Identidad sonora CHICHEJ">
