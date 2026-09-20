@@ -1,5 +1,12 @@
 # CHICHEJ Web
 
+## Reservas del cliente — Fase 7A
+
+Mi Cuenta → Reservas permite crear solicitudes propias, consultar detalle y cancelar únicamente las pendientes. Conserva la colección Firestore reservas y el esquema PHP. Las pruebas automáticas usan datos simulados; Eduardo debe verificar la primera creación/cancelación real y los permisos vigentes.
+
+Ejecutar `node scripts/check-reservations.mjs` junto con los seis checks anteriores. [Informe y validación manual de Reservas](docs/FASE-7A-RESERVAS-CLIENTE.md). Sin reglas modificadas ni deploy.
+
+
 ## Edición del perfil propio — Fase 6B
 
 Perfil permite editar nombre, teléfono y avatar del catálogo local mediante una actualización parcial del usuario autenticado en RTDB. Correo, rol, bloqueo y campos administrativos quedan fuera del formulario y del payload. Cancelar descarta el borrador y recarga los datos. La primera escritura real y los permisos remotos quedan para la verificación manual de Eduardo; no hubo cambios de reglas ni deploy.
