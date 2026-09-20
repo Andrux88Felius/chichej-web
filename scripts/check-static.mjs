@@ -21,6 +21,8 @@ for (const page of pages) {
   for (const image of html.matchAll(/<img\b[^>]*>/g)) assert.match(image[0], /\balt="[^"]*"/);
   for (const match of html.matchAll(/(?:src|href|value)="([^"]+)"/g)) {
     const ref = match[1];
+    // Los valores de formulario son datos; se conservan las comprobaciones de pistas de audio.
+    if (match[0].startsWith('value=') && !ref.endsWith('.mp3')) continue;
     if (/^(https?:|tel:)/.test(ref)) continue;
     assert.notEqual(ref, '#', page + ': no enlaces vacíos');
     const [file, hash] = ref.split('#');

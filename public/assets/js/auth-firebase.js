@@ -18,6 +18,7 @@ async function connect() {
   const auth = getAuth(app);
   const database = getDatabase(app);
   return createAuthState({
+    currentUser: () => auth.currentUser,
     onChange: callback => onAuthStateChanged(auth, callback),
     async signIn(email, password, remember) {
       await setPersistence(auth, remember ? browserLocalPersistence : browserSessionPersistence);

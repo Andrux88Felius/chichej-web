@@ -95,7 +95,8 @@ for (const code of ['auth/invalid-email', 'auth/too-many-requests', 'auth/networ
 const scripts = new URL('../public/assets/js/', import.meta.url);
 for (const name of await readdir(scripts)) {
   const source = await readFile(new URL(name, scripts), 'utf8');
-  assert(!/(?<![.\w])(?:updateProfile|updateEmail|updatePassword|setCustomUserClaims|addDoc|setDoc|updateDoc|deleteDoc|writeBatch|push|update|remove|set)\s*\(/.test(source), name + ': sin escrituras fuera del alcance');
+  assert(!/(?<![.\w])(?:updateProfile|updateEmail|updatePassword|setCustomUserClaims|addDoc|setDoc|updateDoc|deleteDoc|writeBatch|push|remove|set)\s*\(/.test(source), name + ': sin escrituras fuera del alcance');
+  if (name !== 'profile-edit-firebase.js') assert(!/(?<![.\w])update\s*\(/.test(source), name + ': edición propia aislada');
   if (name !== 'register-firebase.js') assert(!/\b(?:createUserWithEmailAndPassword|deleteUser|runTransaction)\s*\(/.test(source), name + ': registro aislado');
   if (name !== 'recovery-firebase.js') assert(!/\bsendPasswordResetEmail\s*\(/.test(source), name + ': recuperación aislada');
   assert(!/localStorage|sessionStorage|getIdToken|192\.168\.|\/var\/www|[A-Z]:\\/.test(source), name + ': sin credenciales/rutas/almacenamiento manual');

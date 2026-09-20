@@ -43,8 +43,10 @@ for (const page of ['index', 'perfil']) {
   assert.match(html, /data-account-content hidden/);
   assert.match(html, /src="\.\.\/assets\/js\/account-ui.js"/);
   assert.match(html, /data-auth-logout/);
+  if (page === 'index') assert(!/<input|<form/.test(html));
+  if (page === 'perfil') assert.match(html, /data-profile-edit method="post" hidden/);
   assert.match(html, /data-public-root="\.\.\/"/);
-  assert(!/<input|<form|\.php|\?uid=|href="(?:pedidos|reservas|promociones)/.test(html));
+  assert(!/\.php|\?uid=|href="(?:pedidos|reservas|promociones)/.test(html));
 }
 for (const module of ['account-data', 'account-view', 'account-ui', 'auth-guard']) {
   const source = await readFile(new URL('../public/assets/js/' + module + '.js', import.meta.url), 'utf8');

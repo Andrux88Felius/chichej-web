@@ -1,5 +1,11 @@
 # CHICHEJ Web
 
+## Edición del perfil propio — Fase 6B
+
+Perfil permite editar nombre, teléfono y avatar del catálogo local mediante una actualización parcial del usuario autenticado en RTDB. Correo, rol, bloqueo y campos administrativos quedan fuera del formulario y del payload. Cancelar descarta el borrador y recarga los datos. La primera escritura real y los permisos remotos quedan para la verificación manual de Eduardo; no hubo cambios de reglas ni deploy.
+
+Ejecutar también `node scripts/check-profile-edit.mjs` junto con los cinco checks anteriores. [Informe, límites de seguridad y lista de verificación](docs/FASE-6B-EDICION-PERFIL.md).
+
 ## Mi Cuenta y Perfil de consulta — Fase 6A
 
 `public/usuario/index.html` y `public/usuario/perfil.html` muestran únicamente el perfil propio de la sesión Firebase. Sin sesión, redirigen a Login. La navegación autenticada permite entrar a Mi cuenta; logout limpia los datos y vuelve al Inicio público. Edición, pedidos, reservas y promociones siguen pendientes. Se mantiene el acceso de admin/admin_principal a su propio perfil, como en requireUser del original, sin panel administrativo ni cambio de rol.

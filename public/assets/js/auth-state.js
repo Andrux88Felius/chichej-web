@@ -93,6 +93,7 @@ export function createAuthState(adapter) {
   return {
     ready,
     getState: () => state,
+    async refresh() { await ready; if (!busy) await observe(adapter.currentUser()); },
     subscribe(listener) { listeners.add(listener); listener(state); return () => listeners.delete(listener); },
     async login(email, password, remember) {
       if (busy) return;
