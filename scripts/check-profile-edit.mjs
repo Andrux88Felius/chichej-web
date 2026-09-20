@@ -33,7 +33,19 @@ raw={...raw,bloqueado:true}; await session.refresh(); assert.equal(signouts,1); 
 const read = name=>readFile(new URL('../'+name,import.meta.url),'utf8');
 const html=await read('public/usuario/perfil.html');
 const names=[...html.matchAll(/<(?:input|select)\b[^>]*\bname="([^"]+)"/g)].map(m=>m[1]);
-assert.deepEqual(names,EDITABLE_PROFILE_FIELDS);
+assert.deepEqual([...new Set(names)],EDITABLE_PROFILE_FIELDS);
+assert(!/<select[^>]*name="avatarPath"/.test(html));
+assert.match(html, /<fieldset class="profile-avatar-picker"/);
+const avatarOptions=[...html.matchAll(/<input type="radio" name="avatarPath" value="([^"]+)" required>/g)].map(m=>m[1]);
+assert.equal(avatarOptions.length,10);
+assert.equal(new Set(avatarOptions).size,10);
+for (const avatarPath of avatarOptions) {
+ assert.deepEqual(allowedChanges({avatarPath}),{avatarPath});
+ assert.equal(editableValues({avatarPath}).avatarPath,avatarPath);
+ const image=avatarPath.replace('assets/avatares/','../assets/img/avatares/');
+ assert(html.includes('src="'+image+'"'));
+}
+assert.equal(editableValues({avatarPath:'invalid'}).avatarPath,'assets/avatares/invitado.png');
 assert(!/type="(?:hidden|file|password|email)"|data-uid|\?uid=|\.php/.test(html));
 const sdk=await read('public/assets/js/profile-edit-firebase.js');
 assert.match(sdk,/update\(ref\(database, 'usuarios\/' \+ auth.currentUser.uid\), payload\)/);
