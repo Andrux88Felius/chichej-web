@@ -1,3 +1,4 @@
+import {isAdminRole} from './admin-guard.js';
 export async function mountAuthUI(getSession, navigate = url => window.location.assign(url)) {
   const form = document.querySelector('[data-login-form]');
   const status = document.querySelector('[data-auth-status]');
@@ -7,6 +8,7 @@ export async function mountAuthUI(getSession, navigate = url => window.location.
 
   function render(state) {
     const authenticated = state.status === 'authenticated';
+    document.querySelectorAll('[data-admin-link]').forEach(element => { element.hidden = !authenticated || !isAdminRole(state.profile?.role); });
     const pending = ['loading', 'checking', 'signing-in'].includes(state.status);
     const canLogout = authenticated || state.status === 'logout-error';
     document.querySelectorAll('[data-auth-login]').forEach(element => { element.hidden = canLogout; });

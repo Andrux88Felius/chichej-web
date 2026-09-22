@@ -1,5 +1,12 @@
 # CHICHEJ Web
 
+## Administración de reservas — Fase 7B
+
+Administración → Reservas está disponible para admin_principal y el rol histórico admin. Permite listado global, búsqueda, filtros, detalle y aceptar/rechazar únicamente pendientes mediante transacción. La primera transición real y su reflejo en Flutter quedan para Eduardo.
+
+Ejecutar también `node scripts/check-admin-reservations.mjs` junto con los siete checks anteriores. [Informe, límites y prueba manual](docs/FASE-7B-ADMIN-RESERVAS.md). Sin cambios de reglas ni deploy.
+
+
 ## Reservas del cliente — Fase 7A
 
 Mi Cuenta → Reservas permite crear solicitudes propias, consultar detalle y cancelar únicamente las pendientes. Conserva la colección Firestore reservas y el esquema PHP. Las pruebas automáticas usan datos simulados; Eduardo debe verificar la primera creación/cancelación real y los permisos vigentes.
