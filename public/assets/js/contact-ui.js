@@ -2,6 +2,7 @@ import {getSession} from './auth-firebase.js';
 const form=document.querySelector('[data-contact-form]');
 const status=form.querySelector('[data-contact-status]');
 const link=form.querySelector('[data-contact-open]');
+form.querySelector('[data-contact-submit]').disabled=false;
 form.addEventListener('input',()=>{link.hidden=true;link.removeAttribute('href');status.textContent='';});
 form.addEventListener('submit',event=>{
   event.preventDefault();

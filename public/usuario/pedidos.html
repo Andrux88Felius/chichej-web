@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Consulta privada de tu cuenta y perfil CHICHEJ.">
+    <meta name="description" content="Publicaciones y promociones activas de CHICHEJ.">
     <meta name="theme-color" content="#4b1f24">
-    <title>Mi cuenta | CHICHEJ</title>
+    <title>Mis pedidos | CHICHEJ</title>
     <link rel="icon" type="image/png" href="../assets/img/icon/logo_icon.png">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/pilot.css">
 </head>
-<body data-public-root="../">
+<body data-monitor-kind="orders" data-monitor-admin="false" data-public-root="../">
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <header class="site-header" data-header>
     <div class="container nav-wrap">
@@ -30,11 +30,12 @@
             <a href="../contacto.html">Contacto</a>
             <a class="" href="../informacion.html">Información</a>
             <a href="../registro.html" data-auth-login>Crear cuenta</a>
-        <a href="../usuario/index.html" data-account-link hidden aria-current="page">Mi cuenta</a><a href="../admin/reservas.html" data-admin-link hidden>Administración</a></nav>
+        <a href="../usuario/index.html" data-account-link hidden>Mi cuenta</a><a href="../admin/reservas.html" data-admin-link hidden>Administración</a></nav>
         <a class="nav-login" href="../login.html" data-auth-login><span>Iniciar sesión</span><b aria-hidden="true">↗</b></a><div class="portable-account" data-auth-account hidden><span data-auth-name></span><button type="button" data-auth-logout>Cerrar sesión</button></div>
     </div>
 </header>
-<main id="contenido" class="portal"><div class="container account-loading"><p data-account-status role="status" aria-live="polite">Comprobando sesión…</p><a class="text-link" href="../login.html">Ir a Iniciar sesión</a><noscript><p>Activa JavaScript para comprobar tu sesión y consultar tu perfil.</p></noscript></div><div data-account-content hidden><section class="portal-hero portal-hero--small"><div class="container"><span class="eyebrow eyebrow--light">Área privada</span><h1>Mi cuenta</h1><p>Tu espacio CHICHEJ. Consulta de información personal.</p></div></section><section class="section section--cream"><div class="container profile-layout"><aside class="profile-card"><img class="profile-avatar" data-account-avatar alt="Avatar de tu cuenta" hidden><h2 data-account-field="nombre"></h2><p data-account-field="rol"></p><nav aria-label="Menú de cuenta"><a href="index.html" aria-current="page" data-account-link hidden>Mi cuenta</a><a href="perfil.html">Perfil</a><a href="../usuario/reservas.html">Reservas</a><a href="../index.html">Volver al inicio</a><button class="button button--ghost" type="button" data-auth-logout>Cerrar sesión</button></nav></aside><div class="profile-content"><section class="profile-section"><div class="profile-section__head"><div><span class="eyebrow">Información personal</span><h2>Bienvenido a tu cuenta</h2></div><a class="button button--ghost" href="perfil.html">Editar en Perfil</a></div><dl class="account-fields"><div><dt>Nombre completo</dt><dd data-account-field="nombre"></dd></div><div><dt>Correo electrónico</dt><dd data-account-field="email"></dd></div><div><dt>Rol</dt><dd data-account-field="rol"></dd></div><div><dt>Teléfono</dt><dd data-account-field="telefono"></dd></div><div><dt>Fecha de registro</dt><dd data-account-field="fecha"></dd></div><div><dt>Estado de cuenta</dt><dd data-account-field="estado"></dd></div><div><dt>Muestras disponibles</dt><dd data-account-field="disponibles"></dd></div><div><dt>Muestras utilizadas</dt><dd data-account-field="utilizadas"></dd></div></dl><p>Los campos sin datos aparecen como “No registrado”. No se realizan cambios desde esta página.</p></section><div class="portal-grid"><a class="portal-card" href="perfil.html"><span>◎</span><h2>Mi perfil</h2><p>Consulta tus datos personales.</p><b>Consultar →</b></a><a class="portal-card" href="../usuario/pedidos.html"><h2>Pedidos</h2><p>Consulta tus pedidos existentes.</p><b>Ver mis pedidos →</b></a><a class="portal-card" href="reservas.html"><h2>Reservas</h2><p>Crea y consulta tus solicitudes.</p><b>Ver mis reservas →</b></a><a class="portal-card" href="../promociones.html"><h2>Promociones</h2><p>Consulta las publicaciones activas.</p><b>Ver promociones →</b></a></div></div></div></section></div></main><footer class="site-footer">
+<p class="container portable-auth-status" data-auth-status role="status" aria-live="polite" aria-atomic="true"></p>
+<main id="contenido"><section class="portal-hero"><div class="container"><h1>Mis pedidos</h1><p>Consulta de datos existentes. No se envían órdenes a la máquina.</p></div></section><section class="section section--cream"><div class="container"><p data-monitor-status role="status">Comprobando sesión…</p><section data-monitor-content hidden><button class="button button--primary" data-monitor-refresh>Actualizar consulta</button><label>Buscar<input type="search" data-monitor-search></label><label>Estado<select data-monitor-filter><option value="">Todos</option></select></label><div data-monitor-list class="promotions-live-grid"></div><p>Sin cambios automáticos de estado, reintentos de dispensación ni activación de bomba o agitador.</p></section></div></section></main><footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand"><a class="brand brand--footer" href="../index.html" aria-label="CHICHEJ, inicio"><img src="../assets/img/logo-chichej.png" alt="" width="520" height="480"><span>CHICHEJ<small>Tradición & innovación</small></span></a><p>Una experiencia boliviana que une tradición, sabor y tecnología.</p><div class="socials"><a href="https://www.facebook.com/share/19654KdARH" target="_blank" rel="noopener noreferrer" aria-label="Facebook oficial de CHICHEJ"><img src="../assets/img/redes-ico/Facebook_Logo_Primary.png" alt=""></a><a href="https://www.instagram.com/chichejwinapu" target="_blank" rel="noopener noreferrer" aria-label="Instagram oficial de CHICHEJ"><img src="../assets/img/redes-ico/Instagram_Glyph_Gradient.png" alt=""></a><a href="https://www.tiktok.com/@chichej.wiapu" target="_blank" rel="noopener noreferrer" aria-label="TikTok oficial de CHICHEJ"><img src="../assets/img/redes-ico/TikTok_Icon_Black_Circle.png" alt=""></a><a class="social-link social-link--whatsapp" href="https://wa.me/59177271557" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp oficial de CHICHEJ"><img src="../assets/img/redes-ico/Digital_Glyph_Green_RGB_2026.png" alt=""></a></div></div>
         <div><h2>Explora</h2><a href="../nosotros.html">Nosotros</a><a href="../productos.html">Productos</a><a href="../promociones.html">Promociones</a><a href="../dispensar.html">Dispensar</a><a href="../informacion.html">Información del proyecto</a><a class="footer-app-link" href="../index.html#descargar-app">Descargar app Android</a></div>
@@ -56,7 +57,6 @@
 </aside>
 <script src="../assets/js/pilot.js"></script>
 <script type="module" src="../assets/js/auth-ui.js"></script>
-
-<script type="module" src="../assets/js/account-ui.js"></script>
+<script type="module" src="../assets/js/monitor-ui.js"></script>
 </body>
 </html>
