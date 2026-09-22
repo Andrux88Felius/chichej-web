@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);
+const hosting=JSON.parse(await readFile(new URL('firebase.json',root),'utf8'));
+const targets=JSON.parse(await readFile(new URL('.firebaserc',root),'utf8'));
+const config=await readFile(new URL('public/assets/js/firebase-config.js',root),'utf8');
+assert.deepEqual(Object.keys(hosting),['hosting'],'No incluir reglas ni Functions en este despliegue');
+assert.equal(hosting.hosting.public,'public');
+assert(hosting.hosting.ignore.includes('**/*.php'));
+assert(hosting.hosting.ignore.includes('**/.*'));
+assert.equal(targets.projects.default,'chichej-2026');
+assert.match(config,/projectId:\s*['"]chichej-2026['"]/);
+console.log('OK: Hosting local apunta a public y chichej-2026; sin configuración de despliegue de reglas o Functions. No valida sesión CLI ni publica.');
