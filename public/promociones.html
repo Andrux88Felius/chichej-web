@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Crea tu cuenta CHICHEJ para compartir tu identidad entre la web y la aplicación.">
+    <meta name="description" content="Publicaciones y promociones activas de CHICHEJ.">
     <meta name="theme-color" content="#4b1f24">
-    <title>Crear cuenta | CHICHEJ</title>
+    <title>Promociones | CHICHEJ</title>
     <link rel="icon" type="image/png" href="assets/img/icon/logo_icon.png">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/pilot.css">
@@ -22,7 +22,7 @@
         <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
             <a href="index.html">Inicio</a>
             <a class="" href="nosotros.html">Nosotros</a>
-            <a href="productos.html">Productos</a>
+            <a href="productos.html" class="is-active" aria-current="page">Productos</a>
             <a href="promociones.html">Promociones</a>
             <a class=""  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Dispensar</a>
             <a href="usuario/reservas.html">Reservas</a>
@@ -34,29 +34,11 @@
         <a class="nav-login" href="login.html" data-auth-login><span>Iniciar sesión</span><b aria-hidden="true">↗</b></a><div class="portable-account" data-auth-account hidden><span data-auth-name></span><button type="button" data-auth-logout>Cerrar sesión</button></div>
     </div>
 </header>
-<main id="contenido" class="auth-page"><section class="auth-shell">
-<div class="auth-visual auth-visual--register"><img src="assets/img/maserado4.jpeg" alt="Experiencia tradicional CHICHEJ" loading="lazy"><div><span class="eyebrow eyebrow--light">Identidad compartida</span><h1>Una sola cuenta CHICHEJ.</h1><p>Comparte tu identidad entre la web y la aplicación.</p></div></div>
-<div class="auth-panel"><a class="auth-back" href="index.html">← Volver al inicio</a><div class="auth-form-wrap auth-form-wrap--register"><span class="eyebrow">Registro</span><h2>Crea tu cuenta</h2><p>Regístrate para disfrutar de CHICHEJ.</p>
-<form class="form-card form-card--plain" data-registration-form method="post" aria-describedby="registration-status">
-<fieldset data-register-fields disabled>
-<label for="register-name">Nombre completo</label><input id="register-name" type="text" name="nombre" minlength="2" maxlength="80" autocomplete="name" required>
-<label for="register-email">Correo electrónico</label><input id="register-email" type="email" name="email" autocomplete="email" inputmode="email" autocapitalize="none" spellcheck="false" required>
-<label for="register-password">Contraseña</label><span class="password-wrap"><input id="register-password" type="password" name="password" minlength="8" autocomplete="new-password" aria-describedby="password-help" required><button type="button" data-register-toggle aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></span>
-<p id="password-help" class="password-help">Al menos 8 caracteres con mayúscula, minúscula, número y símbolo.</p>
-<label for="register-confirmation">Confirmar contraseña</label><input id="register-confirmation" type="password" name="confirmation" minlength="8" autocomplete="new-password" required>
-<button type="submit" class="button button--primary button--full">Crear cuenta</button>
-</fieldset></form>
-<p id="registration-status" data-registration-status class="form-status" role="status" aria-live="polite" aria-atomic="true">Preparando registro…</p>
-<button data-registration-retry type="button" class="button button--primary" hidden>Reintentar perfil</button>
-<p data-registration-next hidden><a class="text-link" href="login.html">Ir a Iniciar sesión →</a></p>
-<p data-auth-status class="form-status" role="status" aria-live="polite"></p>
-<div class="auth-message" data-auth-account hidden><strong data-auth-name></strong><span data-auth-session-only>Rol: <span data-auth-role></span></span><a class="text-link" href="index.html">Continuar al inicio →</a><button class="button button--primary" data-auth-logout type="button">Cerrar sesión</button></div>
-<p class="auth-switch" data-auth-login>¿Ya tienes una cuenta? <a href="login.html">Iniciar sesión</a></p>
-<noscript><p>Activa JavaScript para crear tu cuenta de forma segura.</p></noscript>
-</div></div></section></main><footer class="site-footer">
+<p class="container portable-auth-status" data-auth-status role="status" aria-live="polite" aria-atomic="true"></p>
+<main id="contenido"><section class="portal-hero"><div class="container"><span class="eyebrow eyebrow--light">CHICHEJ</span><h1>Promociones</h1><p>Consulta las publicaciones activas y sus condiciones.</p></div></section><section class="section section--cream"><div class="container"><p data-promotions-status role="status" aria-live="polite">Cargando promociones…</p><div data-promotions-list class="promotions-live-grid"></div><noscript>Activa JavaScript para consultar las promociones actuales.</noscript></div></section></main><footer class="site-footer">
     <div class="container footer-grid">
         <div class="footer-brand"><a class="brand brand--footer" href="index.html" aria-label="CHICHEJ, inicio"><img src="assets/img/logo-chichej.png" alt="" width="520" height="480"><span>CHICHEJ<small>Tradición & innovación</small></span></a><p>Una experiencia boliviana que une tradición, sabor y tecnología.</p><div class="socials"><a href="https://www.facebook.com/share/19654KdARH" target="_blank" rel="noopener noreferrer" aria-label="Facebook oficial de CHICHEJ"><img src="assets/img/redes-ico/Facebook_Logo_Primary.png" alt=""></a><a href="https://www.instagram.com/chichejwinapu" target="_blank" rel="noopener noreferrer" aria-label="Instagram oficial de CHICHEJ"><img src="assets/img/redes-ico/Instagram_Glyph_Gradient.png" alt=""></a><a href="https://www.tiktok.com/@chichej.wiapu" target="_blank" rel="noopener noreferrer" aria-label="TikTok oficial de CHICHEJ"><img src="assets/img/redes-ico/TikTok_Icon_Black_Circle.png" alt=""></a><a class="social-link social-link--whatsapp" href="https://wa.me/59177271557" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp oficial de CHICHEJ"><img src="assets/img/redes-ico/Digital_Glyph_Green_RGB_2026.png" alt=""></a></div></div>
-        <div><h2>Explora</h2><a href="nosotros.html">Nosotros</a><a href="productos.html">Productos</a><a href="promociones.html">Promociones</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Dispensar</a><a href="informacion.html">Información del proyecto</a><a class="footer-app-link" href="index.html#descargar-app">Descargar app Android</a></div>
+        <div><h2>Explora</h2><a href="nosotros.html">Nosotros</a><a href="productos.html" class="is-active" aria-current="page">Productos</a><a href="promociones.html">Promociones</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Dispensar</a><a href="informacion.html">Información del proyecto</a><a class="footer-app-link" href="index.html#descargar-app">Descargar app Android</a></div>
         <div><h2>Tu cuenta</h2><a href="login.html" data-auth-login>Iniciar sesión</a><div data-auth-account hidden><span data-auth-name></span><button class="footer-logout" type="button" data-auth-logout>Cerrar sesión</button></div><a href="registro.html" data-auth-login>Crear cuenta</a><a href="usuario/reservas.html">Reservas</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Pedidos</a></div>
         <div><h2>Contacto</h2><a href="tel:+59173085467">Gerencia: 73085467</a><a href="https://wa.me/59177271557" target="_blank" rel="noopener noreferrer">WhatsApp: 77271557</a><a  aria-disabled="true" title="Disponible en la versión PHP; pendiente de migración" role="link">Formulario de contacto</a></div>
     </div>
@@ -75,6 +57,6 @@
 </aside>
 <script src="assets/js/pilot.js"></script>
 <script type="module" src="assets/js/auth-ui.js"></script>
-<script type="module" src="assets/js/register-ui.js"></script>
+<script type="module" src="assets/js/promotions-ui.js"></script>
 </body>
 </html>
