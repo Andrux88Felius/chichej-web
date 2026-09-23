@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 // Ejecutar con el servidor estático activo. No visita enlaces externos.
 const root = fileURLToPath(new URL('../public/', import.meta.url));
 const origin = process.argv[2] || 'http://localhost:8080';
-const pages = ['index.html', 'nosotros.html', 'informacion.html', 'productos.html', 'login.html', 'registro.html', 'usuario/index.html', 'usuario/perfil.html', 'usuario/reservas.html', 'admin/reservas.html', 'promociones.html', 'contacto.html', 'dispensar.html', 'admin/maquina.html', 'admin/pedidos.html', 'usuario/pedidos.html'];
+const pages = ['index.html', 'nosotros.html', 'informacion.html', 'productos.html', 'login.html', 'registro.html', 'usuario/index.html', 'usuario/perfil.html', 'usuario/reservas.html', 'admin/reservas.html', 'promociones.html', 'contacto.html', 'descargar-app.html', 'dispensar.html', 'admin/maquina.html', 'admin/pedidos.html', 'usuario/pedidos.html'];
 const resources = new Set(pages);
 for (const page of pages) {
   const html = await readFile(resolve(root, page), 'utf8');
@@ -38,7 +38,7 @@ async function inspect(directory) {
     const path = resolve(directory, entry.name);
     if (entry.isDirectory()) await inspect(path);
     else {
-      assert(['.html', '.css', '.js', '.png', '.jpeg', '.jpg', '.mp3'].includes(extname(path)), 'Archivo inesperado en public');
+      assert(['.html', '.css', '.js', '.png', '.svg', '.jpeg', '.jpg', '.mp3'].includes(extname(path)), 'Archivo inesperado en public');
       resources.add(relative(root, path).replaceAll('\\', '/'));
     }
   }

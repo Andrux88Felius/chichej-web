@@ -5,7 +5,10 @@ const root=new URL('../public/',import.meta.url);
 for(const dir of ['','admin/','usuario/'])for(const name of await readdir(new URL(dir,root))){
   if(!name.endsWith('.html'))continue;
   const html=await readFile(new URL(dir+name,root),'utf8');
-  for(const route of ['contacto','dispensar','promociones'])assert.match(html,new RegExp('href="(?:../)?'+route+'\\.html"'),dir+name);
+  for(const route of ['contacto','descargar-app','promociones'])assert.match(html,new RegExp('href="(?:../)?'+route+'\\.html"'),dir+name);
+  assert(!/href="(?:\.\.\/)?dispensar\.html"/.test(html),'No promover dispensación web: '+dir+name);
+  assert.match(html,/class="fa-brands fa-youtube"/);
+  assert.match(html,/href="https:\/\/www\.youtube\.com\/channel\/UCNrElbwuSsUQSRKH5Xkay4Q" target="_blank" rel="noopener noreferrer"/);
   if(dir==='admin/')assert(!html.includes('data-sound-player'),name);
 }
 const monitor=await readFile(new URL('assets/js/monitor-view.js',root),'utf8');
@@ -18,4 +21,16 @@ assert.match(monitor,/admin&&!isAdminRole/);
 assert.equal(isAdminRole('cliente'),false);assert.equal(isAdminRole('admin'),true);assert.equal(isAdminRole('admin_principal'),true);
 assert.match(contact,/Todavía no se ha enviado/);
 assert.match(contact,/encodeURIComponent/);
+const home=await readFile(new URL('index.html',root),'utf8');
+assert.match(home,/href="registro\.html"[^>]*>Crear mi cuenta<\/a>/);
+assert(!/Pendiente de migración|Ir a dispensar|app-qr-placeholder/.test(home));
+const download=await readFile(new URL('descargar-app.html',root),'utf8');
+assert.match(download,/data-apk-download href="https:\/\/github\.com\/Andrux88Felius\/CHICHEJ\/releases\/latest\/download\/CHICHEJ-v1\.0\.0\.apk"/);
+for(const html of [home,download])assert.match(html,/src="assets\/img\/qr\/descargar-app\.png"/);
+const qr=await readFile(new URL('assets/img/qr/descargar-app.png',root));
+assert.equal(qr.subarray(1,4).toString(),'PNG');
+assert.equal(qr.readUInt32BE(16),540);assert.equal(qr.readUInt32BE(20),540);
+const about=await readFile(new URL('nosotros.html',root),'utf8');
+assert.match(about,/aria-label="Videos: canal oficial de CHICHEJ">Videos ↗<\/a>/);
+for(const pending of ['Fotografías','Demostración','Tríptico digital','Documentación pública'])assert(about.includes(pending));
 console.log('OK: navegación portable, admin sin música, nuevas consultas sin escrituras y contacto sin confirmación falsa de envío.');
