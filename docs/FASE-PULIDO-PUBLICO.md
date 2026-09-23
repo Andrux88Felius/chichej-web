@@ -17,8 +17,12 @@
 
 ## Git y Hosting
 
-Commit funcional previsto: feat: finalize public app download and social links. El hash y resultado del despliegue se registrarán después de obtenerlos, mediante actualización documental de cierre.
+Commit funcional desplegado: **0542a70a605cc471988b46ec467661d1f454d632**, feat: finalize public app download and social links. Push a origin/main confirmado y árbol limpio antes del despliegue. Esta actualización documental posterior registra la evidencia real de publicación sin modificar los archivos publicados.
 
-Firebase CLI 15.30.2 comprobada con firebase.cmd. Proyecto activo chichej-2026 y acceso autenticado confirmados. firebase.json conserva hosting.public = public, sin configuración de reglas o Functions modificada. Publicación pendiente de commit/push y confirmación de árbol limpio.
+Firebase CLI 15.30.2 comprobada con firebase.cmd. Proyecto activo chichej-2026 y acceso autenticado confirmados. firebase.json conserva hosting.public = public, sin configuración de reglas o Functions modificada.
 
-Único comando de despliegue autorizado para este cierre: firebase.cmd deploy --only hosting.
+Despliegue realizado correctamente con **firebase.cmd deploy --only hosting**: 107 archivos, release completo. No se desplegaron reglas ni Functions.
+
+URL devuelta por Firebase: https://chichej-2026.web.app. Verificaciones posteriores: Inicio y https://chichej-2026.web.app/descargar-app.html responden HTTP 200 sobre HTTPS; ambos HTML coinciden byte a byte con la copia desplegada. QR PNG e icono SVG también responden 200 con tipos correctos y contenido idéntico. El PNG descargado desde producción fue decodificado nuevamente: contiene exactamente la URL permanente de descarga. La página pública muestra APK, QR y YouTube sin errores de consola observados. El CTA Crear mi cuenta navega correctamente a registro.html. No se enviaron formularios ni mensajes reales.
+
+Las herramientas temporales de generación/lectura y los datos de prueba fueron retirados. Queda únicamente la comprobación física opcional del QR con el teléfono de Eduardo; la decodificación de la imagen local y publicada ya fue validada.
